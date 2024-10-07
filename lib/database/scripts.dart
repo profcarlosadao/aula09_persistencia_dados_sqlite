@@ -1,4 +1,6 @@
-const nameDB = "tasks";
+const nameDB = "myApp";
+
+const tableName = "tasks";
 
 const String createTable = '''
   CREATE TABLE tasks(

@@ -1,6 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'scritps.dart';
+import '../domain/task.dart';
+import 'scripts.dart';
 
 class TaskDataBase {
   static final TaskDataBase instance = TaskDataBase._init();
@@ -28,13 +29,12 @@ class TaskDataBase {
 
   Future<int> insert(Task task) async {
     final db = await instance.database;
-    return await db.insert("taks", task.toJson());
+    return await db.insert(tableName, task.toJson());
   }
 
   Future<List<Task>> readAll() async {
     final db = await instance.database;
-    final result = await db.query("tasks");
-    return result.map((taskJson) => Task.fromJson()).toList();
+    final result = await db.query(tableName);
+    return result.map((taskJson) => Task.fromJson(taskJson)).toList();
   }
-
 }
