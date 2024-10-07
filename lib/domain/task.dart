@@ -1,9 +1,9 @@
 class Task {
   int? id;
-  String? content;
-  int? status;
+  late String content;
+  late int status;
 
-  Task({this.id, this.content, this.status});
+  Task({this.id, required this.content, required this.status});
 
   Task.fromJson(Map<String, dynamic> json) {
     id = json['id'];
